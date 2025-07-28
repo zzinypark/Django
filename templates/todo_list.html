@@ -1,31 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>USER LIST</title>
-</head>
-<body>
-    <nav>
-        <div style="text-align:right">
-            {% if user.is_authenticated %}
-                {{ user.username }}<br>
-                <form action="{% url 'logout' %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit">로그아웃</button>
-                </form>
-            {% else %}
-                <a href="{% url 'user_login' %}">로그인</a>
-                <a href="{% url 'user_signup' %}">회원가입</a>
-            {% endif %}
-        </div>
-    </nav>
+{% extends 'base.html' %}
+
+{% block content %}
     <div class="container">
         <h1>Todo LIST</h1>
+
         <ul>
-            {% for todo in data %}
+            {% for todo in page_obj %}
                 <li><a href="{% url 'todo_info' todo.id %}">{{ todo.title }}</a></li>
+            {% empty %}
+                <li>할 일이 없습니다.</li>
             {% endfor %}
         </ul>
+
+        <div class="pagination">
+            <span>
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; 처음</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">이전</a>
+                {% endif %}
+
+                <span class="current">
+                    페이지 {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">다음</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">끝 &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
     </div>
-</body>
-</html>
+{% endblock %}

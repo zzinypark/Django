@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>USER INFO</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
     <div class="container">
-        <h1>{{ data.title }}</h1>
-        <table>
-            {% for key, value in data.items %}
-                {% if key != 'title' %}
-                    <tr>
-                        <th>{{ key }}</th>
-                        <td>{{ value }}</td>
-                    </tr>
-                {% endif %}
-            {% endfor %}
-        </table>
+        <h1>{{ todo.title }}</h1>
+    <table>
+        <tr><th>설명</th><td>{{ todo.description }}</td></tr>
+        <tr><th>시작일</th><td>{{ todo.start_date }}</td></tr>
+        <tr><th>종료일</th><td>{{ todo.end_date }}</td></tr>
+        <tr><th>완료 여부</th><td>{{ todo.is_completed }}</td></tr>
+    </table>
     </div>
-</body>
-</html>
+{% endblock %}
