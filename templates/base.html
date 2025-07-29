@@ -6,6 +6,9 @@
 </head>
 <body>
     <nav>
+        <div style="text-align:left">
+            <a href="{% url 'cbv_todo_list' %}">🏠 홈으로</a>
+        </div>
         <div style="text-align:right">
             {% if user.is_authenticated %}
                 {{ user.username }}<br>

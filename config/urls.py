@@ -6,6 +6,10 @@ from users import views as user_view
 
 urlpatterns = [
 		path('admin/', admin.site.urls),
+        # CBV
+        path('cbv/', include('todo.urls')),
+
+        #FBV
         path('todo/', todo_list, name='todo_list'), # 추가
         path('todo/<int:todo_id>/', todo_info, name='todo_info'),
         path('todo/create/', todo_create, name='todo_create'),
