@@ -3,10 +3,10 @@
 {% block content %}
     <div class="container">
         <h1>Todo LIST</h1>
-
+        <a href="{% url 'cbv_todo_create' %}">➕ 새 할 일 추가</a>
         <ul>
             {% for todo in page_obj %}
-                <li><a href="{% url 'todo_info' todo.id %}">{{ todo.title }}</a></li>
+                <li><a href="{% url 'cbv_todo_info' todo.id %}">{{ todo.title }}</a></li>
             {% empty %}
                 <li>할 일이 없습니다.</li>
             {% endfor %}
