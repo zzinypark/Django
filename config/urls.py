@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from todo.views import todo_list, todo_info, todo_create, todo_delete, todo_update
@@ -21,3 +23,6 @@ urlpatterns = [
         path('accounts/signup/', user_view.user_signup, name='user_signup'),
         path('accounts/', include('django.contrib.auth.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

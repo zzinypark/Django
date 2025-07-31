@@ -1,9 +1,4 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>오늘 할 일 작성</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button>생성</button>
-    </form>
+  {% include 'todo_form.html' %}
 {% endblock %}
