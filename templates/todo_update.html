@@ -1,9 +1,4 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>할 일 수정</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button>수정</button>
-    </form>
+  {% include 'todo_form.html' %}
 {% endblock %}
