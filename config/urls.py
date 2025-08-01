@@ -19,9 +19,11 @@ urlpatterns = [
         path('todo/<int:todo_id>/delete/', todo_delete, name='todo_delete'),
 
         #user
-        path('accounts/login/', user_view.user_login, name='user_login'),
-        path('accounts/signup/', user_view.user_signup, name='user_signup'),
+        # path('accounts/login/', user_view.user_login, name='user_login'),
+        # path('accounts/signup/', user_view.user_signup, name='user_signup'),
         path('accounts/', include('django.contrib.auth.urls')),
+        path('users/', include('users.urls')),
+        path('summernobe/', include('django_summernote.urls')),
 ]
 
 if settings.DEBUG:
